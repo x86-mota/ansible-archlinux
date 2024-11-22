@@ -1,5 +1,0 @@
----
-- name: Checking if the system is Archlinux
-  fail:
-    msg: "It seems that the system is not ArchLinux. Aborting..."
-  when: ansible_facts['distribution'] != 'Archlinux'
