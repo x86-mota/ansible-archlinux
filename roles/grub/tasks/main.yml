@@ -1,1 +1,4 @@
 ---
+
+- name: Check GRUB config faile
+  import_tasks: check_grub.yml
