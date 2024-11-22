@@ -1,0 +1,20 @@
+---
+
+- block:
+  - name: Uncommenting misc options
+    lineinfile:
+      path: "{{ path }}"
+      regexp: "^#{{ item }}"
+      line: "{{ item }}"
+    loop:
+     - Color
+     - CheckSpace
+     - VerbosePkgLists
+     - ParallelDownloads = 5
+  
+  - name: Adding ILoveCandy option
+    lineinfile:
+      path: "{{ path }}"
+      insertafter: 'Color'
+      line: 'ILoveCandy'
+  become: true

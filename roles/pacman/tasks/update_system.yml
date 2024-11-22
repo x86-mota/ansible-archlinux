@@ -1,0 +1,7 @@
+---
+
+- name: Updating Repositories
+  become: true
+  pacman:
+    update_cache: yes
+    upgrade: yes

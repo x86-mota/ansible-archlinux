@@ -1,2 +1,12 @@
 ---
-- import_tasks: pacman.yml
+- name: Check Linux distribution
+  import_tasks: check_distro.yml
+
+- name: Adding extra spice to pacman.conf
+  import_tasks: enable_misc_options.yml
+
+- name: Enable multilib repo
+  import_tasks: enable_multilib.yml
+
+- name: Update system
+  import_tasks: update_system.yml
