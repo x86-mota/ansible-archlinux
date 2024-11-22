@@ -1,2 +1,33 @@
-- name: Iniciando..
-  command: echo "Pacman" 
+---
+
+- block:
+  - name: Checking if the system is Archlinux
+    fail:
+      msg: "It seems that the system is not ArchLinux. Aborting..."
+    when: ansible_facts['distribution'] != 'Archlinux'
+
+  - name: Adding extra spice to pacman.conf
+    lineinfile:
+      path: "{{ path }}"
+      regexp: "^#{{ item }}"
+      line: "{{ item }}"
+    loop:
+     - Color
+     - CheckSpace
+     - VerbosePkgLists
+     - ParallelDownloads = 5
+  
+  - name: Add ILoveCandy
+    lineinfile:
+      path: "{{ path }}"
+      insertafter: 'Color'
+      line: 'ILoveCandy'
+
+  - name: Enabling multilib repository
+    command: sed -i "/\[multilib\]/,/Include/"'s/^#//' "{{ path }}"
+
+  - name: Updating Repositories
+    pacman:
+      update_cache: yes
+      upgrade: yes
+  become: true
