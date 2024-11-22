@@ -1,0 +1,8 @@
+---
+
+- name: Creating grub.cfg backup faile
+  become: true
+  copy:
+    src: "{{ path }}"
+    dest: "{{ path }}~"
+  when: grub.rc == 0
