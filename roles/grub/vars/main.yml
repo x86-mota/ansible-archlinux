@@ -1,3 +1,4 @@
 ---
 
-path: /boot/grub/grub.cfg
+config_path: /etc/default/grub
+cfg_path: /boot/grub/grub.cfg

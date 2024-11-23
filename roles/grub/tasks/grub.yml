@@ -1,12 +1,12 @@
 ---
 
 - name: Verifying GRUB install
-  command: test -f "{{ path }}"
-  register: grub
+  command: test -f "{{ cfg_path }}"
+  register: grubcfg
   ignore_errors: true
   failed_when: false
 
 - name: Creating grub.cfg backup faile
   become: true
-  command: mv "{{ path }}" "{{ path }}~"
-  when: grub.rc == 0
+  command: mv "{{ config_path }}" "{{ config_path }}~"
+  when: grubcfg.rc == 0
