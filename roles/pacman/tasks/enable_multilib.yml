@@ -1,5 +1,0 @@
----
-
-- name: Enabling multilib repository
-  become: true
-  command: sed -i "/\[multilib\]/,/Include/"'s/^#//' "{{ path }}"

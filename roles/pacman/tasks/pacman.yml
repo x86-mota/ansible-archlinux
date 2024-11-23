@@ -17,4 +17,12 @@
       path: "{{ path }}"
       insertafter: 'Color'
       line: 'ILoveCandy'
+
+  - name: Enabling multilib repository
+    command: sed -i "/\[multilib\]/,/Include/"'s/^#//' "{{ path }}"
+
+  - name: Updating system
+    pacman:
+      update_cache: yes
+      upgrade: yes
   become: true
