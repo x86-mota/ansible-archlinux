@@ -1,7 +1,0 @@
----
-
-- name: Verifying GRUB install
-  command: test -f "{{ path }}"
-  register: grub
-  ignore_errors: true
-  failed_when: false

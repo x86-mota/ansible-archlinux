@@ -1,7 +1,4 @@
 ---
 
-- name: Check GRUB config faile
-  import_tasks: check_grub.yml
-
-- name: Create backup
-  import_tasks: backup_file.yml
+- name: Edit GRUB options
+  import_tasks: grub.yml
