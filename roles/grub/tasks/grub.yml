@@ -1,12 +1,25 @@
 ---
-
-- name: Verifying GRUB install
-  command: test -f "{{ cfg_path }}"
-  register: grubcfg
-  ignore_errors: true
-  failed_when: false
-
-- name: Creating grub.cfg backup faile
+- block:
+  - name: Verifying GRUB install
+    command: test -f "{{ cfg_path }}"
+    register: grubcfg
+    ignore_errors: true
+    failed_when: false
+  
+  - name: Creating grub.cfg backup faile
+    command: mv "{{ config_path }}" "{{ config_path }}~"
+    when: grubcfg.rc == 0
+  
+  - name: Setting up GRUB config file
+    copy:
+      dest: "{{ config_path }}"
+      content: |
+        # GRUB boot loader configuration
+        GRUB_DEFAULT=0
+        GRUB_TIMEOUT_STYLE=hidden
+        GRUB_TIMEOUT=0
+        GRUB_DISTRIBUTOR="Arch Linux"
+        GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+        GRUB_CMDLINE_LINUX=""
+    when: grubcfg.rc == 0
   become: true
-  command: mv "{{ config_path }}" "{{ config_path }}~"
-  when: grubcfg.rc == 0
