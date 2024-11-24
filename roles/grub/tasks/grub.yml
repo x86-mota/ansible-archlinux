@@ -7,7 +7,7 @@
   failed_when: false
 
 - block:  
-  - name: Creating grub.cfg backup faile
+  - name: Creating grub backup faile
     command: mv "{{ config_path }}" "{{ config_path }}~"
   
   - name: Setting up GRUB config file
