@@ -26,5 +26,8 @@
     command: sed -i "s/\(GRUB_CMDLINE_LINUX_DEFAULT=\"[^\"]*\)/\1 nvidia_drm.modeset=1/" "{{ config_path }}"
     when: gpu_vendor.strip() == 'NVIDIA'
 
+  - name: Updating GRUB
+    command: grub-mkconfig -o /boot/grub/grub.cfg
+
   when: grubcfg.rc == 0
   become: true
