@@ -1,4 +1,4 @@
 ---
 
-- name: Get some system information
+- name: Get graphics card information
   import_tasks: graphics.yml
