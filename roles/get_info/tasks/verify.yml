@@ -8,10 +8,10 @@
         "lspci -k | grep -E '(VGA|3D)' | awk -F ': ' '{print $NF}'")
       %}
       {% set gpu_output = gpu_output.split(' ')[0] %}
-      {% set gpu_case = {
+      {% set gpu_vendors = {
         'NVIDIA': 'NVIDIA',
         'AMD': 'AMD',
         'Intel': 'Intel'
       } %}
-      {% set gpu_vendor = gpu_case.get(gpu_output, 'unknown') %}
+      {% set gpu_vendor = gpu_vendors.get(gpu_output, 'unknown') %}
       {{ gpu_vendor }}
