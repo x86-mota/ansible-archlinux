@@ -1,4 +1,4 @@
 ---
 
 - name: Get some system information
-  import_tasks: verify.yml
+  import_tasks: graphics.yml
