@@ -1,0 +1,17 @@
+---
+
+- name: Getting the GPU vendor
+  set_fact:
+    gpu_vendor: >
+      {% set gpu_output = lookup(
+        'pipe',
+        "lspci -k | grep -E '(VGA|3D)' | awk -F ': ' '{print $NF}'")
+      %}
+      {% set gpu_output = gpu_output.split(' ')[0] %}
+      {% set gpu_case = {
+        'NVIDIA': 'NVIDIA',
+        'AMD': 'AMD',
+        'Intel': 'Intel'
+      } %}
+      {% set gpu_vendor = gpu_case.get(gpu_output, 'unknown') %}
+      {{ gpu_vendor }}

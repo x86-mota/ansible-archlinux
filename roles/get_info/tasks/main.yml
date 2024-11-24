@@ -1,0 +1,4 @@
+---
+
+- name: Get some system information
+  import_tasks: verify.yml
