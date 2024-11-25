@@ -1,16 +1,28 @@
 ---
 
 - name: Installing AMD GPU packages
-  debug:
-    msg: "{{ amdgpu_packages }}"
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    "{{ amdgpu_packages }}"
   when: gpu_vendor.strip() == 'amd'
 
 - name: Installing Intel GPU packages
-  debug:
-    msg: "{{ intelgpu_packages }}"
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    "{{ intelgpu_packages }}"
   when: gpu_vendor.strip() == 'intel'
 
 - name: Installing Nvidia GPU packages
-  debug:
-    msg: "{{ nvidiagpu_packages }}"
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    "{{ nvidiagpu_packages }}"
   when: gpu_vendor.strip() == 'nvidia'
