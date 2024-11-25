@@ -1,28 +1,9 @@
 ---
 
-- name: Installing AMD GPU packages
+- name: Installing GPU packages
   become: true
   pacman:
     name: "{{ item }}"
     state: present
-  loop:
-    "{{ amdgpu_packages }}"
-  when: gpu_vendor.strip() == 'amd'
-
-- name: Installing Intel GPU packages
-  become: true
-  pacman:
-    name: "{{ item }}"
-    state: present
-  loop:
-    "{{ intelgpu_packages }}"
-  when: gpu_vendor.strip() == 'intel'
-
-- name: Installing Nvidia GPU packages
-  become: true
-  pacman:
-    name: "{{ item }}"
-    state: present
-  loop:
-    "{{ nvidiagpu_packages }}"
-  when: gpu_vendor.strip() == 'nvidia'
+  loop: "{{ lookup('vars', gpu_vendor.strip() + 'gpu_packages') }}"
+  when: gpu_vendor.strip() in ['amd', 'intel', 'nvidia']
