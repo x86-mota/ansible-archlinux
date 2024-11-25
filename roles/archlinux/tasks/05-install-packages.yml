@@ -1,11 +1,16 @@
 ---
 
-- name: installing AMD GPU packages
+- name: Installing AMD GPU packages
   debug:
     msg: "{{ amdgpu_packages }}"
   when: gpu_vendor.strip() == 'amd'
 
-- name: installing Intel GPU packages
+- name: Installing Intel GPU packages
   debug:
     msg: "{{ intelgpu_packages }}"
   when: gpu_vendor.strip() == 'intel'
+
+- name: Installing Nvidia GPU packages
+  debug:
+    msg: "{{ nvidiagpu_packages }}"
+  when: gpu_vendor.strip() == 'nvidia'
