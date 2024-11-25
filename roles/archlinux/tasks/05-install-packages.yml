@@ -1,0 +1,6 @@
+---
+
+- name: installing AMD GPU packages
+  debug:
+    msg: "{{ amdgpu_packager }}"
+  when: gpu_vendor.strip() == 'amd'

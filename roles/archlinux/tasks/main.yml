@@ -11,3 +11,6 @@
 
 - name: Install AUR Helper
   import_tasks: 04-aurhelper.yml
+
+- name: Install packages
+  import_tasks: 05-install-packages.yml
