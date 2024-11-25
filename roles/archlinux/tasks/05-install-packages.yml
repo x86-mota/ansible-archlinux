@@ -1,5 +1,13 @@
 ---
 
+- name: Installing CPU microcode
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ lookup('vars', cpu_vendor.strip() + 'cpu_packages') }}"
+  when: cpu_vendor.strip() in ['amd', 'intel']
+
 - name: Installing GPU packages
   become: true
   pacman:

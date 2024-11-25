@@ -6,6 +6,12 @@ grub_cfg_path: /boot/grub/grub.cfg
 download_dir: "/home/{{ ansible_user_id }}/ansible"
 aur_helper: yay
 
+amdcpu_packages:
+  - amd-ucode
+
+intelcpu_packages:
+  - intel-ucode
+
 amdgpu_packages:
   - libva-mesa-driver
   - mesa
