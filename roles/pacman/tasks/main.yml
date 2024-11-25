@@ -1,4 +1,0 @@
----
-
-- name: Edit pacman.conf
-  import_tasks: pacman.yml

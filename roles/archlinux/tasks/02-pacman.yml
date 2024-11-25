@@ -3,7 +3,7 @@
 - block:
   - name: Uncommenting misc options
     lineinfile:
-      path: "{{ path }}"
+      path: "{{ pacman_config_path }}"
       regexp: "^#{{ item }}"
       line: "{{ item }}"
     loop:
@@ -14,12 +14,12 @@
   
   - name: Adding ILoveCandy option
     lineinfile:
-      path: "{{ path }}"
+      path: "{{ pacman_config_path }}"
       insertafter: 'Color'
       line: 'ILoveCandy'
 
   - name: Enabling multilib repository
-    command: sed -i "/\[multilib\]/,/Include/"'s/^#//' "{{ path }}"
+    command: sed -i "/\[multilib\]/,/Include/"'s/^#//' "{{ pacman_config_path }}"
 
   - name: Updating system
     pacman:

@@ -1,6 +1,6 @@
 ---
-- hosts: local
+- name: deploy archlinux
+  hosts: 
+    - local
   roles:
-  - get_info
-  - pacman
-  - grub
+    - archlinux

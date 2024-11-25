@@ -1,4 +1,0 @@
----
-
-- name: Get graphics card information
-  import_tasks: graphics.yml

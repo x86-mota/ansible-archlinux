@@ -1,0 +1,35 @@
+---
+
+- name: Getting the CPU vendor
+  set_fact:
+    cpu_vendor: >
+      {% set cpu_vendor = ansible_facts['processor'][1] %}
+      {% set cpu_vendors = {
+        'AuthenticAMD': 'amd',
+        'GenuineIntel': 'intel'
+      } %}
+      {{ cpu_vendors.get(cpu_vendor, 'unknown') }}
+
+- name: Getting the GPU vendor
+  set_fact:
+    gpu_vendor: >
+      {% set gpu_output = lookup(
+        'pipe',
+        "lspci -k | grep -E '(VGA|3D)' | awk -F ': ' '{print $NF}'")
+      %}
+      {% set gpu_output = gpu_output.split(' ')[0] %}
+      {% set gpu_vendors = {
+        'NVIDIA': 'nvidia',
+        'AMD': 'amd',
+        'Intel': 'intel'
+      } %}
+      {{ gpu_vendors.get(gpu_output, 'unknown') }}
+
+- name: Getting kernels
+  set_fact:
+    kernel_packages: >
+      {% set kernel_packages = lookup(
+        'pipe',
+        "cat /usr/lib/modules/*/pkgbase")
+      %}
+      {{ kernel_packages }}

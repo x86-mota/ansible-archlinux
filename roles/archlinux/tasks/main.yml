@@ -1,0 +1,10 @@
+---
+
+- name: Get some system information
+  import_tasks: 01-syscheck.yml
+
+- name: Edit pacman.conf
+  import_tasks: 02-pacman.yml
+
+- name: Set up bootloader
+  import_tasks: 03-bootloader.yml

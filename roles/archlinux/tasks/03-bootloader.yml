@@ -1,18 +1,18 @@
 ---
 
 - name: Verifying GRUB install
-  command: test -f "{{ cfg_path }}"
+  command: test -f "{{ grub_cfg_path }}"
   register: grubcfg
   ignore_errors: true
   failed_when: false
 
 - block:  
   - name: Creating grub backup faile
-    command: mv "{{ config_path }}" "{{ config_path }}~"
+    command: mv "{{ grub_config_path }}" "{{ grub_config_path }}~"
   
   - name: Setting up GRUB config file
     copy:
-      dest: "{{ config_path }}"
+      dest: "{{ grub_config_path }}"
       content: |
         # GRUB boot loader configuration
         GRUB_DEFAULT=0
@@ -23,7 +23,7 @@
         GRUB_CMDLINE_LINUX=""
 
   - name: Adding nvidia module
-    command: sed -i "s/\(GRUB_CMDLINE_LINUX_DEFAULT=\"[^\"]*\)/\1 nvidia_drm.modeset=1/" "{{ config_path }}"
+    command: sed -i "s/\(GRUB_CMDLINE_LINUX_DEFAULT=\"[^\"]*\)/\1 nvidia_drm.modeset=1/" "{{ grub_config_path }}"
     when: gpu_vendor.strip() == 'NVIDIA'
 
   - name: Updating GRUB

@@ -1,0 +1,5 @@
+---
+
+pacman_config_path: /etc/pacman.conf
+grub_config_path: /etc/default/grub
+grub_cfg_path: /boot/grub/grub.cfg

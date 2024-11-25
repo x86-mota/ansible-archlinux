@@ -1,4 +1,0 @@
----
-
-- name: Edit GRUB options
-  import_tasks: grub.yml
