@@ -1,0 +1,52 @@
+---
+
+- name: Checking if AUR helper is already installed
+  shell: |
+    command -v yay || command -v paru
+  register: is_aurhelper
+  ignore_errors: true
+  failed_when: false
+
+- block:
+  - name: Installing base-devel package
+    become: true
+    pacman:
+      name: base-devel
+      state: present  
+
+  - name: Downloading AUR repository
+    git:
+      repo: "https://aur.archlinux.org/{{ aur_helper }}.git"
+      dest: "{{ download_dir }}/{{ aur_helper }}"
+      depth: 1
+
+  - name: Geting make depencies
+    shell: |
+      source {{ download_dir }}/{{ aur_helper }}/PKGBUILD
+      echo ${makedepends[@]}
+    register: makedepends
+  
+  - name: Installing make dependencies
+    become: true
+    pacman:
+      name: "{{ item }}"
+      state: present
+    loop:
+      "{{ makedepends.stdout.split() | list }}"
+
+  - name: Building package
+    command: makepkg --noconfirm --force
+    args:
+      chdir: "{{ download_dir }}/{{ aur_helper }}"
+
+  - name: Geting package name to install
+    shell: |
+      ls "{{ download_dir }}/{{ aur_helper }}"/*.pkg.tar.zst | grep -v 'debug'
+    register: aur_package
+
+  - name: Installing AUR Helper {{ aur_helper }}
+    become: true
+    pacman:
+      name: "{{ aur_package.stdout }}"
+      state: present
+  when: is_aurhelper.rc != 0

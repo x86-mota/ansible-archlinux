@@ -8,3 +8,6 @@
 
 - name: Set up bootloader
   import_tasks: 03-bootloader.yml
+
+- name: Install AUR Helper
+  import_tasks: 04-aurhelper.yml
