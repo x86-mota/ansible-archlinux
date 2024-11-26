@@ -14,3 +14,6 @@
 
 - name: Install packages
   import_tasks: 05-install-packages.yml
+
+- name: Enable services
+  import_tasks: 06-enable-services.yml

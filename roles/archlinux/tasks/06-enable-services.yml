@@ -1,0 +1,10 @@
+---
+
+- name: Enabling services
+  become: true
+  systemd_service:
+    name: "{{ item }}"
+    enabled: true
+  loop:
+    "{{ services }}"
+  ignore_errors: true
