@@ -5,10 +5,6 @@ grub_config_path: /etc/default/grub
 grub_cfg_path: /boot/grub/grub.cfg
 download_dir: "/home/{{ ansible_user_id }}/ansible"
 aur_helper: yay
-services:
-  - NetworkManager
-  - bluetooth
-  - sddm
 
 amdcpu_packages:
   - amd-ucode
