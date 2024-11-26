@@ -16,4 +16,4 @@
   import_tasks: 05-install-packages.yml
 
 - name: Enable services
-  import_tasks: 06-enable-services.yml
+  import_tasks: 06-setup-system.yml
