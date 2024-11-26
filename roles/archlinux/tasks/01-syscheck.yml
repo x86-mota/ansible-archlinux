@@ -24,12 +24,3 @@
         'Intel': 'intel'
       } %}
       {{ gpu_vendors.get(gpu_output, 'unknown') }}
-
-- name: Getting kernels
-  set_fact:
-    kernel_packages: >
-      {% set kernel_packages = lookup(
-        'pipe',
-        "cat /usr/lib/modules/*/pkgbase")
-      %}
-      {{ kernel_packages }}

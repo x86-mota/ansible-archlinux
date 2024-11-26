@@ -1,17 +1,24 @@
 ---
 
-- name: Installing CPU microcode
-  become: true
-  pacman:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ lookup('vars', cpu_vendor.strip() + 'cpu_packages') }}"
-  when: cpu_vendor.strip() in ['amd', 'intel']
+- block:
+  - name: Installing CPU microcode
+    pacman:
+      name: "{{ item }}"
+      state: present
+    loop: "{{ lookup('vars', cpu_vendor.strip() + 'cpu_packages') }}"
+    when: cpu_vendor.strip() in ['amd', 'intel']
+  
+  - name: Installing GPU packages
+    pacman:
+      name: "{{ item }}"
+      state: present
+    loop: "{{ lookup('vars', gpu_vendor.strip() + 'gpu_packages') }}"
+    when: gpu_vendor.strip() in ['amd', 'intel', 'nvidia']
 
-- name: Installing GPU packages
+  - name: Installing linux headers
+    pacman:
+      name: "{{ item }}"
+      state: present
+    loop:
+      "{{ lookup('pipe', 'cat /usr/lib/modules/*/pkgbase') | split() }}"
   become: true
-  pacman:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ lookup('vars', gpu_vendor.strip() + 'gpu_packages') }}"
-  when: gpu_vendor.strip() in ['amd', 'intel', 'nvidia']
