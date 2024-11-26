@@ -1,10 +1,27 @@
 ---
 
-- name: Enabling services
+- block: 
+  - name: Enabling services
+    systemd_service:
+      name: "{{ item }}"
+      enabled: true
+    loop:
+      "{{ services }}"
+    ignore_errors: true
+  
+  - name: Adding nvidia driver modules to the initramfs
+    lineinfile:
+      path: /etc/mkinitcpio.conf
+      regexp: "^MODULES=()"
+      line: MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+    when: gpu_vendor.strip() == 'nvidia'
+
+  - name: Adding nvidia kernel module options
+    copy:
+      dest: /etc/modprobe.d/nvidia.conf
+      content: options nvidia_drm modeset=1 fbdev=1
+
+  - name: Rebuilding initramfs
+    shell: |
+      mkinitcpio -P
   become: true
-  systemd_service:
-    name: "{{ item }}"
-    enabled: true
-  loop:
-    "{{ services }}"
-  ignore_errors: true
