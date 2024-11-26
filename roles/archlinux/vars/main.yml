@@ -44,3 +44,60 @@ nvidiagpu_packages:
   - vulkan-tools
   - lib32-nvidia-utils
   - lib32-vulkan-icd-loader
+
+pacman_packages:
+  - hyprland
+  - waybar
+  - xdg-desktop-portal-hyprland
+  - sddm
+  - btop
+  - fastfetch
+  - dosfstools
+  - ntfs-3g
+  - kitty
+  - bash-completion
+  - imagemagick
+  - starship
+  - network-manager-applet
+  - ttf-jetbrains-mono-nerd
+  - bluez
+  - bluez-tools
+  - bluez-utils
+  - blueman
+  - polkit-gnome
+  - pavucontrol
+  - pipewire
+  - pipewire-alsa
+  - pipewire-audio
+  - pipewire-pulse
+  - gst-plugin-pipewire
+  - wireplumber
+  - thunar
+  - gvfs
+  - thunar-archive-plugin
+  - thunar-volman
+  - tumbler
+  - ffmpegthumbnailer
+  - file-roller
+  - unzip
+  - gnome-disk-utility
+  - papirus-icon-theme
+  - slurp
+  - grim
+  - rofi
+  - swaync
+  - celluloid
+  - eog
+  - discord
+  - steam
+  - spotify-launcher
+  - gnome-themes-extra
+  - gtk-engine-murrine
+  - nwg-look
+  - sassc
+
+aur_packages:
+  - visual-studio-code-bin
+  - bibata-cursor-theme-bin
+  - brave-bin
+  - wlogout
