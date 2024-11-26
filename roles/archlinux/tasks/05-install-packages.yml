@@ -28,11 +28,10 @@
       state: present
     loop:
       "{{ pacman_packages }}"
-
-  - name: Installing pacman packages
-    pacman: 
-      name: "{{ item }}"
-      state: present
-    loop:
-      "{{ aur_packages }}"
   become: true
+
+- name: Installing aur packages
+  shell: |
+    {{ aur_helper }} -S --noconfirm --needed {{ item }}
+  loop:
+    "{{ aur_packages }}"
