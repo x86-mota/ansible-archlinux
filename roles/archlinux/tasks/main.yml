@@ -3,17 +3,17 @@
 - name: Get some system information
   import_tasks: 01-syscheck.yml
 
-- name: Edit pacman.conf
-  import_tasks: 02-pacman.yml
+# - name: Edit pacman.conf
+#   import_tasks: 02-pacman.yml
 
 - name: Set up bootloader
   import_tasks: 03-bootloader.yml
 
-- name: Install AUR Helper
-  import_tasks: 04-aurhelper.yml
+# - name: Install AUR Helper
+#   import_tasks: 04-aurhelper.yml
 
-- name: Install packages
-  import_tasks: 05-install-packages.yml
+# - name: Install packages
+#   import_tasks: 05-install-packages.yml
 
-- name: Enable services
-  import_tasks: 06-setup-system.yml
+# - name: Enable services
+#   import_tasks: 06-setup-system.yml
