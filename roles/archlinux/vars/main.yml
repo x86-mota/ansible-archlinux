@@ -88,6 +88,7 @@ pacman_packages:
   - celluloid
   - eog
   - evince
+  - gnome-text-editor
   - discord
   - steam
   - spotify-launcher
@@ -105,4 +106,3 @@ aur_packages:
   - brave-bin
   - google-chrome
   - wlogout
-  - sublime-text-4

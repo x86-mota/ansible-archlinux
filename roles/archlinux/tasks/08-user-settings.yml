@@ -56,7 +56,7 @@
       xdg-mime default org.gnome.eog.desktop image/$ext;
     done
     xdg-mime default org.gnome.Evince.desktop application/pdf
-    xdg-mime default sublime_text.desktop text/plain
+    xdg-mime default org.gnome.TextEditor.desktop text/plain
 
 - name: Installing VS Code extensions
   command: code --install-extension "{{ item }}"
