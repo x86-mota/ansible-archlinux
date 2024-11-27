@@ -98,4 +98,5 @@ aur_packages:
   - visual-studio-code-bin
   - bibata-cursor-theme-bin
   - brave-bin
+  - google-chrome
   - wlogout
