@@ -94,6 +94,7 @@ pacman_packages:
   - gtk-engine-murrine
   - nwg-look
   - sassc
+  - docker
 
 aur_packages:
   - visual-studio-code-bin

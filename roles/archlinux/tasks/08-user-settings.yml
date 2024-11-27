@@ -1,5 +1,9 @@
 ---
 
+- name: Enabling docker to use as non-root
+  become: true
+  command: sudo usermod -aG docker "{{ ansible_user_id }}"
+
 - name: Adding starship to bashrc
   lineinfile:
     path: "/home/{{ ansible_user_id }}/.bashrc"

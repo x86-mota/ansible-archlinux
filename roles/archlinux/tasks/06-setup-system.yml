@@ -9,6 +9,7 @@
       - NetworkManager
       - bluetooth
       - sddm
+      - docker
     ignore_errors: true
   
   - name: Adding nvidia driver modules to the initramfs
