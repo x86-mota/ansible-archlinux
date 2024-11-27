@@ -20,3 +20,6 @@
 
 - name: Install QEMU/KVM
   import_tasks: 07-qemu.yml
+
+- name: Set up user
+  import_tasks: 08-user-settings.yml

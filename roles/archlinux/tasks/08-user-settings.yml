@@ -16,7 +16,7 @@
 
 - name: Install GTK theme
   shell: |
-    ./install.sh --theme grey --color dark --libadwaita --tweaks black
+    ./install.sh -t grey -c dark --libadwaita --tweaks black
   args:
     chdir: "{{ download_dir }}/GtkTheme/themes"
 
@@ -36,3 +36,14 @@
     src: "{{ download_dir }}/dotfiles-main/"
     dest: "/home/{{ ansible_user_id }}/.config"
     force: true
+
+- name: Setting up gsettings
+  shell: |
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+    gsettings set org.gnome.desktop.interface gtk-theme TokyoNight-Grey-Dark
+    gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+    gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice
+    gsettings set org.gnome.desktop.interface cursor-size 24
+    gsettings set org.gnome.desktop.interface font-name "JetBrainsMono Nerd Font 11"
+    gsettings set org.gnome.desktop.interface document-font-name "JetBrainsMono Nerd Font 11"
+    gsettings set org.gnome.desktop.interface monospace-font-name "JetBrainsMono Nerd Font 11"
