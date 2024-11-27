@@ -8,7 +8,7 @@
       eval "$(starship init bash)"
     insertbefore: EOF
 
-- name: Downloading AUR repository
+- name: Downloading GTK theme repository
   git:
     repo: "https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
     dest: "{{ download_dir }}/GtkTheme"
@@ -19,4 +19,20 @@
     ./install.sh --theme grey --color dark --libadwaita --tweaks black
   args:
     chdir: "{{ download_dir }}/GtkTheme/themes"
-# Copiar dotfiles
+
+- name: Downloading dotfiles
+  get_url: 
+    url: https://github.com/x86-mota/dotfiles/archive/refs/heads/main.zip
+    dest: "{{ download_dir }}/dotfiles.zip"
+    force: true
+
+- name: Extracting files
+  unarchive:
+    src: "{{ download_dir }}/dotfiles.zip"
+    dest: "{{ download_dir }}"
+
+- name: Copying dotfiles to the .config folder
+  copy:
+    src: "{{ download_dir }}/dotfiles-main/"
+    dest: "/home/{{ ansible_user_id }}/.config"
+    force: true
