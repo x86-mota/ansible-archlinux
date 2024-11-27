@@ -94,6 +94,7 @@ pacman_packages:
   - gtk-engine-murrine
   - nwg-look
   - sassc
+  - git
   - docker
 
 aur_packages:
