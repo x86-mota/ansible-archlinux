@@ -10,6 +10,13 @@
       - bluetooth
       - sddm
     ignore_errors: true
+
+  - name: Enabling KVM services
+    shell: |
+      for drv in qemu interface network nodedev nwfilter secret storage; do
+        sudo systemctl enable virt${drv}d.service;
+        sudo systemctl enable virt${drv}d{,-ro,-admin}.socket;
+      done
   
   - name: Adding nvidia driver modules to the initramfs
     lineinfile:
