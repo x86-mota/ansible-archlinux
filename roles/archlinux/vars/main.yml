@@ -80,6 +80,7 @@ pacman_packages:
   - unzip
   - gnome-disk-utility
   - papirus-icon-theme
+  - swww
   - slurp
   - grim
   - rofi
