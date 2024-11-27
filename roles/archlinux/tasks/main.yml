@@ -17,3 +17,6 @@
 
 - name: Set up system
   import_tasks: 06-setup-system.yml
+
+- name: Install QEMU/KVM
+  import_tasks: 07-qemu.yml
