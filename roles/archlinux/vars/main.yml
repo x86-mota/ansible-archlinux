@@ -96,6 +96,7 @@ pacman_packages:
   - sassc
   - git
   - docker
+  - terraform
 
 aur_packages:
   - visual-studio-code-bin
