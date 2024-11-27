@@ -47,3 +47,9 @@
     gsettings set org.gnome.desktop.interface font-name "JetBrainsMono Nerd Font 11"
     gsettings set org.gnome.desktop.interface document-font-name "JetBrainsMono Nerd Font 11"
     gsettings set org.gnome.desktop.interface monospace-font-name "JetBrainsMono Nerd Font 11"
+    xdg-settings set default-web-browser brave-browser.desktop
+    for ext in png jpeg jpg gif svg+xml; do
+      xdg-mime default org.gnome.eog.desktop image/$ext;
+    done
+    xdg-mime default org.gnome.Evince.desktop application/pdf
+    xdg-mime default sublime_text.desktop text/plain 
