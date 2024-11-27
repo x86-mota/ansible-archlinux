@@ -68,3 +68,11 @@
     - ms-azuretools.vscode-docker
     - hashicorp.terraform
     - redhat.vscode-yaml
+
+- name: Copy scripts to /home/{{ ansible_user_id }}/.local/share/bin
+  copy:
+    src: "{{ item }}"
+    dest: "/home/{{ ansible_user_id }}/.local/share/bin/"
+    mode: '744'
+  with_fileglob:
+   - "files/*.sh"
