@@ -28,12 +28,6 @@
       state: present
     loop:
       "{{ pacman_packages }}"
-
-  - name: Installing QEMU/KVM
-    pacman:
-      name: "{{ item }}"
-      state: present
-    loop: "{{ kvm_packages }}"
   become: true
 
 - name: Installing aur packages

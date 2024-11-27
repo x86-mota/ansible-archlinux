@@ -1,0 +1,37 @@
+---
+
+- block:
+  - name: Installing QEMU/KVM packages
+    pacman:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - qemu-full
+      - libvirt
+      - virt-install
+      - virt-manager
+      - virt-viewer 
+      - edk2-ovmf
+      - swtpm
+      - qemu-img 
+      - guestfs-tools 
+      - libosinfo
+      - tuned
+
+  - name: Enabling KVM services
+    shell: |
+      for drv in qemu interface network nodedev nwfilter secret storage; do
+        sudo systemctl enable virt${drv}d.service;
+        sudo systemctl enable virt${drv}d{,-ro,-admin}.socket;
+      done
+
+  - name:  Adding user to the libvirt group
+    command: sudo usermod -aG libvirt {{ ansible_user_id }}
+  become: true
+
+- name:  Defining the environment variable LIBVIRT_DEFAULT_URI in the local .bashrc
+  lineinfile:
+    path: "/home/{{ ansible_user_id }}/.bashrc"
+    line: |
+      # Libvirt
+      export LIBVIRT_DEFAULT_URI='qemu:///system'
