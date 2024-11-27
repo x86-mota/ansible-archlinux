@@ -7,3 +7,16 @@
       # Starship
       eval "$(starship init bash)"
     insertbefore: EOF
+
+- name: Downloading AUR repository
+  git:
+    repo: "https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
+    dest: "{{ download_dir }}/GtkTheme"
+    depth: 1
+
+- name: Install GTK theme
+  shell: |
+    ./install.sh --theme grey --color dark --libadwaita --tweaks black
+  args:
+    chdir: "{{ download_dir }}/GtkTheme/themes"
+# Copiar dotfiles
