@@ -1,8 +1,11 @@
 ---
 
-- name: Enabling docker to use as non-root
+- name: Adding user in groups 
   become: true
-  command: sudo usermod -aG docker "{{ ansible_user_id }}"
+  command: sudo usermod -aG "{{ item }}" "{{ ansible_user_id }}"
+  loop:
+    - docker
+    - input
 
 - name: Adding starship to bashrc
   lineinfile:
