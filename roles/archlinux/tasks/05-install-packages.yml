@@ -15,12 +15,16 @@
     loop: "{{ lookup('vars', gpu_vendor.strip() + 'gpu_packages') }}"
     when: gpu_vendor.strip() in ['amd', 'intel', 'nvidia']
 
-  - name: Installing linux headers
+  - name: Installing kernel headers
     pacman:
       name: "{{ item }}"
       state: present
     loop:
-      "{{ lookup('pipe', 'cat /usr/lib/modules/*/pkgbase') | split() }}"
+      "{{ 
+        lookup('pipe', 'cat /usr/lib/modules/*/pkgbase') | 
+        split() |
+        map('regex_replace', '^(.*)$', '\\1-headers') | list 
+      }}"
 
   - name: Installing pacman packages
     pacman: 
