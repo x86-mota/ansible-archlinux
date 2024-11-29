@@ -90,6 +90,7 @@ pacman_packages:
   - evince
   - gnome-text-editor
   - discord
+  - bitwarden
   - steam
   - spotify-launcher
   - gnome-themes-extra
