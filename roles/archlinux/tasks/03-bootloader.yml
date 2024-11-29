@@ -1,7 +1,8 @@
 ---
 
 - name: Verifying GRUB install
-  command: test -f /boot/grub/grub.cfg
+  shell: |
+    test -f /boot/grub/grub.cfg || test -f /boot/efi/grub/grub.cfg
   register: grubcfg
   ignore_errors: true
   failed_when: false
@@ -27,7 +28,8 @@
     when: gpu_vendor.strip() == 'nvidia'
 
   - name: Updating GRUB
-    command: grub-mkconfig -o /boot/grub/grub.cfg
+    shell: | 
+      grub-mkconfig -o /boot/grub/grub.cfg || grub-mkconfig -o /boot/efi/grub/grub.cfg 
 
   - name: Installing plymouth
     pacman:
