@@ -56,10 +56,10 @@
     gsettings set org.gnome.desktop.interface monospace-font-name "JetBrainsMono Nerd Font 11"
     xdg-settings set default-web-browser brave-browser.desktop
     for ext in png jpeg jpg gif svg+xml; do
-      xdg-mime default org.gnome.eog.desktop image/$ext;
+      xdg-mime default org.xfce.ristretto.desktop image/$ext;
     done
     xdg-mime default org.gnome.Evince.desktop application/pdf
-    xdg-mime default org.gnome.TextEditor.desktop text/plain
+    xdg-mime default code.desktop text/plain
 
 - name: Installing VS Code extensions
   command: code --install-extension "{{ item }}"

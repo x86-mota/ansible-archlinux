@@ -63,7 +63,7 @@ pacman_packages:
   - bluez-tools
   - bluez-utils
   - blueman
-  - polkit-gnome
+  - mate-polkit
   - pavucontrol
   - pipewire
   - pipewire-alsa
@@ -74,12 +74,12 @@ pacman_packages:
   - thunar
   - gvfs
   - thunar-archive-plugin
+  - thunar-media-tags-plugin
   - thunar-volman
   - tumbler
   - ffmpegthumbnailer
   - file-roller
   - unzip
-  - gnome-disk-utility
   - papirus-icon-theme
   - swww
   - slurp
@@ -87,9 +87,8 @@ pacman_packages:
   - rofi
   - swaync
   - celluloid
-  - eog
+  - ristretto
   - evince
-  - gnome-text-editor
   - discord
   - bitwarden
   - steam
