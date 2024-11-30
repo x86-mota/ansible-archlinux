@@ -49,7 +49,7 @@ function _SetHyprlockBG {
     if pacman -Q hyprlock > /dev/null; then
         hyprlock_path="${HOME}/.config/hypr/hyprlock.conf"
         wallpaper=$(swww query | awk '{print $NF}')
-        sed -i "/background/,/}/s|^\(.*path = \).*|\1$wallpaper|" "$hyprlock_path"
+        sed -i "/background/,/}/s|^\(.*path =\).*|\1 $wallpaper|" "$hyprlock_path"
     fi
 }
 
