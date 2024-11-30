@@ -78,8 +78,9 @@ pacman_packages:
   - thunar-volman
   - tumbler
   - ffmpegthumbnailer
-  - file-roller
+  - xarchiver
   - unzip
+  - gnome-disk-utility
   - papirus-icon-theme
   - swww
   - slurp
