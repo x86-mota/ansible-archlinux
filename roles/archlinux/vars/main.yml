@@ -45,6 +45,7 @@ nvidiagpu_packages:
 
 pacman_packages:
   - hyprland
+  - hyprlock
   - waybar
   - xdg-desktop-portal-hyprland
   - sddm
