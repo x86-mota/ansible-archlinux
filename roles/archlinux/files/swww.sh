@@ -39,8 +39,17 @@ function _SetWallpaper {
             PREVIOUS="${WALLPAPER}"
 
             swww img "${WALLPAPER}" --transition-type random --transition-fps 60 --transition-step 10 --transition-duration 10
+            _SetHyprlockBG
             sleep "${TIMEOUT}"
         done
+    fi
+}
+
+function _SetHyprlockBG {
+    if pacman -Q hyprlock > /dev/null; then
+        hyprlock_path="${HOME}/.config/hypr/hyprlock.conf"
+        wallpaper=$(swww query | awk '{print $NF}')
+        sed -i "/background/,/}/s|^\(.*path = \).*|\1$wallpaper|" "$hyprlock_path"
     fi
 }
 
