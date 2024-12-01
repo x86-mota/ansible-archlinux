@@ -23,7 +23,7 @@
 
 - name: Install GTK theme
   shell: |
-    ./install.sh --libadwaita --tweaks black
+    ./install.sh --theme all --libadwaita --tweaks black
   args:
     chdir: "{{ download_dir }}/GtkTheme/themes"
 
