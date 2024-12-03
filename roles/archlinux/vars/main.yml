@@ -85,7 +85,7 @@ pacman_packages:
   - swww
   - slurp
   - grim
-  - rofi
+  - wofi
   - swaync
   - celluloid
   - ristretto
