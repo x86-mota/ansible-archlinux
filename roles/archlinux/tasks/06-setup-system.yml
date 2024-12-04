@@ -8,7 +8,7 @@
     loop:
       - NetworkManager
       - bluetooth
-      - sddm
+      - ly
       - docker
     ignore_errors: true
   

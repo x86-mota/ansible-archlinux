@@ -48,7 +48,7 @@ pacman_packages:
   - hyprlock
   - waybar
   - xdg-desktop-portal-hyprland
-  - sddm
+  - ly
   - btop
   - fastfetch
   - dosfstools
