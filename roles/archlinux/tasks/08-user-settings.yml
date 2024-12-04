@@ -47,7 +47,7 @@
 - name: Copying scripts to .local/share/bin
   copy:
     src: "{{ download_dir }}/dotfiles-main/scripts/"
-    dest: "/home/{{ ansible_user_id }}.local/share/bin"
+    dest: "/home/{{ ansible_user_id }}/.local/share/bin"
     mode: '744'
     force: true
   with_fileglob:
