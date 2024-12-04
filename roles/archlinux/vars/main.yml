@@ -107,3 +107,4 @@ aur_packages:
   - bibata-cursor-theme-bin
   - brave-bin
   - google-chrome
+  - waybar-module-pacman-updates-git 
