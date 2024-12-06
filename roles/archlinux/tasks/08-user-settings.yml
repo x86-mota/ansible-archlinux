@@ -73,10 +73,9 @@
 - name: Installing VS Code extensions
   command: code --install-extension "{{ item }}"
   loop:
-    - enkia.tokyo-night
+    - dracula-theme.theme-dracula
     - miguelsolorio.symbols
     - ms-python.python
-    - postman.postman-for-vscode
     - ms-azuretools.vscode-docker
     - hashicorp.terraform
     - redhat.vscode-yaml
