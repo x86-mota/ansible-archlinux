@@ -22,11 +22,26 @@
     dest: "{{ download_dir }}/GtkTheme"
     depth: 1
 
-- name: Install GTK theme
+- name: Downloading Dracula theme
+  get_url: 
+    url: https://github.com/dracula/gtk/archive/master.zip
+    dest: "{{ download_dir }}/Dracula.zip"
+    force: true
+
+- name: Extracting files
+  unarchive:
+    src: "{{ download_dir }}/Dracula.zip"
+    dest: "{{ download_dir }}"
+
+- name: Configuring theme
   shell: |
-    ./install.sh --theme all --libadwaita --tweaks black
-  args:
-    chdir: "{{ download_dir }}/GtkTheme/themes"
+    mkdir -p /home/{{ ansible_user_id }}/.themes
+    mkdir -p /home/{{ ansible_user_id }}/.config/gtk-4.0
+    mv "{{ download_dir }}"/gtk-master /home/{{ ansible_user_id }}/.themes/Dracula
+    ln -sf /home/{{ ansible_user_id }}/.themes/Dracula/assets/ /home/{{ ansible_user_id }}/.config
+    ln -sf /home/{{ ansible_user_id }}/.themes/Dracula/assets/ /home/{{ ansible_user_id }}/.config/gtk-4.0/
+    ln -sf /home/{{ ansible_user_id }}/.themes/Dracula/gtk-4.0/gtk.css /home/{{ ansible_user_id }}/.config/gtk-4.0/
+    ln -sf /home/{{ ansible_user_id }}/.themes/Dracula/gtk-4.0/gtk-dark.css /home/{{ ansible_user_id }}/.config/gtk-4.0/
 
 - name: Downloading dotfiles
   get_url: 
