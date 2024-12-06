@@ -98,13 +98,12 @@ pacman_packages:
   - gtk-engine-murrine
   - nwg-look
   - sassc
+  - code
   - git
   - docker
   - terraform
 
 aur_packages:
-  - visual-studio-code-bin
   - bibata-cursor-theme-bin
   - brave-bin
-  - google-chrome
   - waybar-module-pacman-updates-git 
