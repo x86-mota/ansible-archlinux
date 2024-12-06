@@ -91,6 +91,7 @@ pacman_packages:
   - celluloid
   - ristretto
   - evince
+  - firefox
   - discord
   - bitwarden
   - steam
@@ -105,6 +106,5 @@ pacman_packages:
   - terraform
 
 aur_packages:
-  - brave-bin
   - freetube
   - waybar-module-pacman-updates-git 

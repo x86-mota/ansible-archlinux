@@ -80,7 +80,7 @@
     gsettings set org.gnome.desktop.interface font-name "JetBrainsMono Nerd Font 11"
     gsettings set org.gnome.desktop.interface document-font-name "JetBrainsMono Nerd Font 11"
     gsettings set org.gnome.desktop.interface monospace-font-name "JetBrainsMono Nerd Font 11"
-    xdg-settings set default-web-browser brave-browser.desktop
+    xdg-settings set default-web-browser firefox.desktop
     for ext in png jpeg jpg gif svg+xml; do
       xdg-mime default org.xfce.ristretto.desktop image/$ext;
     done
