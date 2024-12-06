@@ -106,4 +106,5 @@ pacman_packages:
 
 aur_packages:
   - brave-bin
+  - freetube
   - waybar-module-pacman-updates-git 
