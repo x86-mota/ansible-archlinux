@@ -58,7 +58,7 @@
     gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     gsettings set org.gnome.desktop.interface gtk-theme Tokyonight-Grey-Dark
     gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
-    gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice
+    gsettings set org.gnome.desktop.interface cursor-theme Vimix-cursors
     gsettings set org.gnome.desktop.interface cursor-size 24
     gsettings set org.gnome.desktop.interface font-name "JetBrainsMono Nerd Font 11"
     gsettings set org.gnome.desktop.interface document-font-name "JetBrainsMono Nerd Font 11"

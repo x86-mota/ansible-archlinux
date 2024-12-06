@@ -82,6 +82,7 @@ pacman_packages:
   - unzip
   - gnome-disk-utility
   - papirus-icon-theme
+  - vimix-cursors
   - swww
   - slurp
   - grim
@@ -104,6 +105,5 @@ pacman_packages:
   - terraform
 
 aur_packages:
-  - bibata-cursor-theme-bin
   - brave-bin
   - waybar-module-pacman-updates-git 
