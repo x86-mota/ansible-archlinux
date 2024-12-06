@@ -33,5 +33,6 @@
   lineinfile:
     path: "/home/{{ ansible_user_id }}/.bashrc"
     line: |
+      
       # Libvirt
       export LIBVIRT_DEFAULT_URI='qemu:///system'

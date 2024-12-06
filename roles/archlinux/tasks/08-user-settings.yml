@@ -11,6 +11,7 @@
   lineinfile:
     path: "/home/{{ ansible_user_id }}/.bashrc"
     line: |
+      
       # Starship
       eval "$(starship init bash)"
     insertbefore: EOF
